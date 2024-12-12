@@ -9,14 +9,13 @@ import 'package:jkmapp/providers/QA/Speech_provider.dart';
 import 'package:jkmapp/providers/client/client_provider.dart';
 import 'package:jkmapp/providers/restaurant/product_provider.dart';
 import 'package:jkmapp/providers/user/Forget_provider.dart';
-
 import 'providers/client/cart_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  setUrlStrategy(PathUrlStrategy());
+  setUrlStrategy(PathUrlStrategy());//開啟path routing-
 
   runApp(
     MultiProvider(

@@ -79,7 +79,6 @@ Future<void> showPasswordDialog(BuildContext context,TextEditingController passw
                 // 檢查密碼是否正確
                 if (passwordController.text == savePassword) {
                   Navigator.of(context).pop(); // 關閉對話框
-                  SnackBarutils.showSnackBar( context,'密碼正確，進入後台設定',Colors.green);
                   onPasswordCorrect();
                 } else {
                   SnackBarutils.showSnackBar( context,'密碼錯誤',Colors.red);

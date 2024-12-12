@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 
 class NotificationProvider with ChangeNotifier {
-  bool _serviceBellPressed = false;
+  bool isServiceBellTapped = false;
+  String? _tableNumber;
+  String? get tableNumber =>_tableNumber;
 
-  bool get serviceBellPressed => _serviceBellPressed;
+  void toggleServiceBell(String tableNumber) {
+    if(isServiceBellTapped)return;//如果服務鈴已經被按下返回true
 
-  void pressServiceBell() {
-    _serviceBellPressed = true;
-    notifyListeners();
+    isServiceBellTapped = true;
+    _tableNumber=tableNumber;
+    notifyListeners();//通知更新
+
+    Future.delayed(const Duration(seconds:20), () {//過了20秒之後關閉
+      isServiceBellTapped = false;
+      _tableNumber=null;
+      notifyListeners();//通知更新
+    });
+
   }
 
-  void resetServiceBell() {
-    _serviceBellPressed = false;
-    notifyListeners();
-  }
 }

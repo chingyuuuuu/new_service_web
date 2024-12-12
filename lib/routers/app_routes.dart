@@ -31,7 +31,7 @@ class Routers{
   static const String forget2 = '/Forget2';
   static const String forget3 = '/Forget3';
   static const String dining = '/Dining';
-  static const String settingpage ='/ProductDetailPage';
+  static const String settingpage ='/SettingsPage';
   static const String createMerchandise = '/Createmerchandise';
   static const String productdetail = '/Productdetail';
   static const String menu = '/Menu';
@@ -73,7 +73,7 @@ class RouteGenerator{
       case Routers.Client:
         final uri=Uri.parse(settings.name!);
         final table = uri.queryParameters['table']??(settings.arguments as String? ?? 'Unknown');;
-        return MaterialPageRoute(builder: (_)=>Client(tableNumber: table),);
+        return MaterialPageRoute(builder: (_)=>Client(tableNumber: table));
       case Routers.settingpage:
         return MaterialPageRoute(builder: (_)=>SettingsPage(onSave: (){},));
       case Routers.orderlistpage:

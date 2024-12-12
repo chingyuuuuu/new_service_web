@@ -6,8 +6,6 @@ import'package:jkmapp/providers/client/Notification_Provider.dart';
 import 'package:provider/provider.dart';
 import 'package:jkmapp/utils/SnackBar.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
-
-
 class dining extends StatefulWidget {
   @override
   _DiningState createState() => _DiningState();
@@ -121,14 +119,12 @@ class _DiningState extends State<dining> {//和statefulwidget適配對，實際�
           Expanded(child: MenuPage()),
           Consumer<NotificationProvider>( // 使用 Consumer監聽狀態
             builder: (context, notificationProvider, child) {
-              if (notificationProvider.serviceBellPressed) {
+              if (notificationProvider.isServiceBellTapped) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {//在build 完成後顯示
-                  SnackBarutils.showSnackBar(context, '按下服務鈴', Colors.red);
-                  // 重置服務鈴狀態
-                  notificationProvider.resetServiceBell();
+                  SnackBarutils.showSnackBar(context, '${notificationProvider.tableNumber} 按下服務鈴', Colors.red);
                 });
               }
-              return Container(); // 這裡可以返回其他 UI 組件
+              return Container();
             },
           ),
         ],

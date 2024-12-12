@@ -11,10 +11,7 @@ class ClientProvider with ChangeNotifier{
     String selectedTypes = '全部'; //允許追蹤哪個按鈕被選中
     bool isServiceBellTapped = false;
 
-    Future<void> showPasswordNotification(BuildContext context) async {
-      String? savedPassword=await StorageHelper.getPassword();
-      SnackBarutils.showSnackBar(context,'後臺密碼是:$savedPassword',Colors.blue);
-    }
+
 
     //加載商品，從商品中取得type(因為儲存在資料庫中當中，所以不會不見)
     Future<void> loadProducts() async {
@@ -75,13 +72,5 @@ class ClientProvider with ChangeNotifier{
       notifyListeners();
     }
 
-    void toggleServiceBell() {
-      isServiceBellTapped = true;
-      notifyListeners();//通知更新
-      Future.delayed(const Duration(seconds:20), () {//過了20秒之後關閉
-        isServiceBellTapped = false;
-        notifyListeners();//通知更新
-      });
-    }
 
 }

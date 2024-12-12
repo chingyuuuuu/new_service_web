@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
 import 'package:jkmapp/routers/app_routes.dart';
 import 'package:jkmapp/providers/client/client_provider.dart';
+import  'package:jkmapp/providers/client/Notification_Provider.dart';
 import 'dart:html' as html;
 
 
@@ -36,7 +37,6 @@ class ClientState extends State<Client> {
     //確保UI完全加載後
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final clientProvider = Provider.of<ClientProvider>(context, listen: false);//表示只會載入一次
-      clientProvider.showPasswordNotification(context);//確保加載這個對話框
       clientProvider.loadProducts();//加載
     });
   }
@@ -50,6 +50,7 @@ class ClientState extends State<Client> {
   @override
   Widget build(BuildContext context) {
     final clientProvider = Provider.of<ClientProvider>(context);
+    final notificationProvider=Provider.of<NotificationProvider>(context);
 
     return Scaffold(
       drawer: Drawer( //側邊儀表板
@@ -81,12 +82,12 @@ class ClientState extends State<Client> {
             const SizedBox(height: 40),
             ListTile(
               leading: Icon(Icons.notifications,
-                  color: clientProvider.isServiceBellTapped
+                  color: notificationProvider.isServiceBellTapped
                         ? Colors.yellow
                         : Colors.black),
               title: Text('服務鈴'),
               onTap: () {
-                clientProvider.toggleServiceBell();
+                notificationProvider.toggleServiceBell(tableNumber);
               },
             ),
             const SizedBox(height: 10),
