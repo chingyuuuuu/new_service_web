@@ -10,11 +10,16 @@ class ProudctCard extends StatelessWidget{
     final Map<String,dynamic>product;
     ProudctCard({required this.product});
 
+
     @override
     Widget build(BuildContext context){
+        //根據螢幕大小調整內容
+        final screenWidth=MediaQuery.of(context).size.width;
+        final cardWidth = (screenWidth / 2).clamp(0, 200) - 20.0; //每行顯示2個商品，減去左右間距
+
         return Container(
-            width: 50,
-            height: 50,
+            width: cardWidth,
+            height:cardWidth*1.2,
             color: Colors.white,
             child: Card(
                 color: Colors.white,
@@ -22,12 +27,12 @@ class ProudctCard extends StatelessWidget{
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                        ImageDisplay(imageData: product['image']),
+                        ImageDisplay(imageData: product['image'],width: cardWidth*0.8,height: cardWidth*0.5,),
                         const SizedBox(height: 5),
-                        Text(product['name'] ?? '', style: const TextStyle(fontSize: 18,),
+                        Text(product['name'] ?? '', style: TextStyle(fontSize: cardWidth*0.1),
                         ),
                         const SizedBox(height: 8),
-                        Text('NT\$ ${product['price']}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.normal,),
+                        Text('NT\$ ${product['price']}', style:  TextStyle(fontSize: cardWidth*0.07, fontWeight: FontWeight.normal,),
                         ),
                         ElevatedButton(
                             onPressed: () {
@@ -39,7 +44,7 @@ class ProudctCard extends StatelessWidget{
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.white,
-                                minimumSize: const Size(100, 40),
+                                minimumSize: Size(cardWidth*0.6,40),
                             ),
                             child: const Text('加入購物車', style: TextStyle(color: Colors.black)),
                         ),

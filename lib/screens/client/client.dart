@@ -217,11 +217,11 @@ class ClientState extends State<Client> {
           SliverPadding( //商品資訊
             padding: const EdgeInsets.all(8.0),
             sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // 每行顯示兩個商品
+              gridDelegate:SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200, // 每個商品卡的最大寬度
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
-                childAspectRatio: 0.9, // 控制圖片和文字的比例
+                childAspectRatio: 0.8, // 控制圖片和文字的比例
               ),
               delegate: SliverChildBuilderDelegate((context, index) {
                   return ProudctCard(product: clientProvider.displayedProducts[index]);

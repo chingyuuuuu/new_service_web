@@ -96,11 +96,11 @@ class MenuPageState extends State<MenuPage> {
               : SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // 每行显示两个商品
+              gridDelegate:SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent:200,// 每行显示两个商品
                 crossAxisSpacing: 5.0, // 方框之间的水平间距
                 mainAxisSpacing: 1.0, // 方框之间的垂直间距
-                childAspectRatio: 1.2, // 控制图片与文字的比例
+                childAspectRatio: 0.8, // 控制图片与文字的比例
               ),
               delegate: SliverChildBuilderDelegate(
                     (context, index) {
