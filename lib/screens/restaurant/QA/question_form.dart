@@ -3,6 +3,8 @@ import 'package:jkmapp/utils/localStorage.dart';
 import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/QA/QA_provider.dart';
 import 'package:jkmapp/services/products/typedialog.dart';
+import 'package:go_router/go_router.dart';
+
 
 class QuestionForm extends StatefulWidget {
   final List<String> categories;
@@ -70,7 +72,7 @@ class _QuestionFormState extends State<QuestionForm> {
       type: selectedCategory,
     );
     if (isSaved) {
-      Navigator.pop(context, true);
+      context.pop(true);
     }
   }
 

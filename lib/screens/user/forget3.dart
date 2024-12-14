@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:jkmapp/routers/app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 class Forget3 extends StatefulWidget {
   @override
@@ -64,7 +64,7 @@ class _Forget3State extends State<Forget3> {
       setState(() {
         _message = 'Password updated successfully!';
       });
-      Navigator.pushNamed(context,Routers.Login);
+      context.go('/Login');
     } else {
       final responseData = jsonDecode(response.body);
       setState(() {
@@ -81,7 +81,7 @@ class _Forget3State extends State<Forget3> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // 返回到上頁
+            context.pop();
           },
         ),
       ),

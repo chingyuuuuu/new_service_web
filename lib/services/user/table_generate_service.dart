@@ -17,7 +17,7 @@ class TableGeneratorService {
     if (count != null && count > 0 && count <= 50) {
       List<Map<String, String>> tableData = List.generate(count, (index) {
         final tableNumber = "table${index + 1}";
-        final qrData = "$baseUrl/#/Client?table=$tableNumber";
+        final qrData = "$baseUrl/Client?$tableNumber";
         return {
           "tableNumber": tableNumber,
           "qrData": qrData,
@@ -127,9 +127,7 @@ class TableGeneratorService {
   //保存生成的桌號
   static Future<void> saveGeneratedTables(List<Map<String, String>> tableData) async {
     final prefs = await SharedPreferences.getInstance();
-    List<String> tableDataToSave = tableData
-        .map((table) => '${table['tableNumber']},${table['qrData']}')
-        .toList();
+    List<String> tableDataToSave = tableData.map((table) => '${table['tableNumber']},${table['qrData']}').toList();
     await prefs.setStringList('generatedTables', tableDataToSave);
   }
 

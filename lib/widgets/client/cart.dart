@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/client/cart_provider.dart';
 import'package:jkmapp/utils/SnackBar.dart';
 import 'package:jkmapp/providers/restaurant/remark_provider.dart';
+import 'package:go_router/go_router.dart';
+
 
 Widget buildCartBottomSheet(BuildContext context,String tableNumber) {
   final cartProvider = Provider.of<CartProvider>(context); // 獲取購物車狀態
@@ -162,7 +164,7 @@ Widget buildCartBottomSheet(BuildContext context,String tableNumber) {
              bool success =await OrderService.saveOrder(tableNumber,products, totalAmount,remark);
              if(success){
               cartProvider.clearCart();
-              Navigator.pop(context);
+              context.pop();
               SnackBarutils.showSnackBar(context, "下單成功", Colors.green);
              }else{
               SnackBarutils.showSnackBar(context, "下單失敗", Colors.red);

@@ -14,6 +14,9 @@ import 'providers/client/cart_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:jkmapp/services/user/websocket_service.dart';
+import 'package:jkmapp/routers/routes.dart';
+import 'package:go_router/go_router.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,7 +56,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Service',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
@@ -62,8 +65,10 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: Routers.first,
-      onGenerateRoute: RouteGenerator.generateRoute,
+      //initialRoute: Routers.first,
+      //onGenerateRoute: RouteGenerator.generateRoute,
+      routerConfig: router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

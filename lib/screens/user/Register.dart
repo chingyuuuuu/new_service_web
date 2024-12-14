@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jkmapp/utils/diolog.dart';
 import 'package:jkmapp/services/user/AuthenticationService.dart';
 import 'package:jkmapp/utils/exception.dart' as custom_exceptions;
-import 'package:jkmapp/routers/app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 
 class Register extends StatelessWidget {
@@ -18,7 +18,7 @@ class Register extends StatelessWidget {
       await _authService.register(email, password);
       showSucessDialog(
           context, '成功註冊','你已經成功註冊了!', onConfirmed: () {
-        Navigator.pushNamed(context, Routers.Login);
+          context.push('/Login');
       });
     }catch(e){
       if (e is custom_exceptions.AuthException) {
@@ -41,7 +41,7 @@ class Register extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // 返回到上一个页面
+            context.pop();
           },
         ),
       ),

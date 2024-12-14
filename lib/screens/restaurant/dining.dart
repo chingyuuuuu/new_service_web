@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'menu.dart';
-import 'package:jkmapp/routers/app_routes.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jkmapp/utils/localStorage.dart';
 import'package:jkmapp/providers/client/Notification_Provider.dart';
 import 'package:provider/provider.dart';
@@ -57,49 +57,49 @@ class _DiningState extends State<dining> {//和statefulwidget適配對，實際�
               title: Text('訂單'),
               onTap: () {
                 Provider.of<OrderProvider>(context,listen: false).getallorders(userId, context);
-                Navigator.pushNamed(context,Routers.userorderlist);
+                context.push('/Userorderlist');
               },
             ),
             ListTile(
               leading: Icon(Icons.menu),
               title: Text('菜單'),
               onTap: () {
-                    Navigator.pop(context);
+                 context.pop();
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('設定'),
               onTap: () {
-                Navigator.pushNamed(context, Routers.settingpage);
+                context.push('/SettingsPage');
               },
              ),
             ListTile(
               leading:Icon(Icons.storage),
               title:Text('問答資料庫'),
               onTap:(){
-                 Navigator.pushNamed(context, Routers.restaurant_database);
+                 context.push('/restaurant_database');
               },
             ),
             ListTile(
               leading:Icon(Icons.people_alt_outlined),
               title:Text('客人模式'),
               onTap:(){
-                Navigator.pushNamed(context, Routers.Client,arguments: 'A1');
+                context.push('/Client/A1');
               },
             ),
             ListTile(
                leading: Icon(Icons.table_bar),
                title:Text('生成桌號'),
                onTap:(){
-                  Navigator.pushNamed(context,Routers.TableManagementPage);
+                  context.push('/TableManagement');
                },
             ),
             ListTile(
               leading: Icon(Icons.price_check_sharp),
               title:Text('結帳'),
               onTap:(){
-                Navigator.pushNamed(context,Routers.CheckPage);
+                context.push('/Checkpage');
               },
             ),
             const SizedBox(height:30),
@@ -107,7 +107,7 @@ class _DiningState extends State<dining> {//和statefulwidget適配對，實際�
               leading: Icon(Icons.logout),
               title: Text('登出'),
               onTap: () {
-                Navigator.pushNamed(context, Routers.Login);
+                context.go('/Login');
               },
             ),
           ],

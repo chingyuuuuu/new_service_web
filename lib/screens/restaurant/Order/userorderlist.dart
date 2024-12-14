@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:jkmapp/screens/restaurant/Order/useroderdetail.dart';
 import 'package:jkmapp/providers/restaurant/remark_provider.dart';
-import 'package:jkmapp/routers/app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 //店家可以看到今天的訂單
 class UserOrderList extends StatefulWidget {
@@ -38,8 +37,8 @@ class _UserOrderListState extends State<UserOrderList> {
           IconButton(
             icon: const Icon(Icons.history),
             onPressed: () {
-              Navigator.pushNamed(context, Routers.order_history);
-            },
+              context.push('/Orderhistory');
+              },
           ),
         ],
       ),
@@ -56,12 +55,7 @@ class _UserOrderListState extends State<UserOrderList> {
           return GestureDetector(
             behavior: HitTestBehavior.translucent,//透明，將事件傳給子組件
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Userorderdetail(orderId: orderId),
-                ),
-              );
+              context.push('/userorderdetail/$orderId');
             },
             child: Container(
               margin: const EdgeInsets.symmetric(

@@ -6,10 +6,10 @@ import 'package:jkmapp/widgets/client/cart.dart';
 import 'package:jkmapp/widgets/client/ProductCard.dart';
 import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
-import 'package:jkmapp/routers/app_routes.dart';
 import 'package:jkmapp/providers/client/client_provider.dart';
 import  'package:jkmapp/providers/client/Notification_Provider.dart';
 import 'dart:html' as html;
+import 'package:go_router/go_router.dart';
 
 
 class Client extends StatefulWidget {
@@ -77,7 +77,7 @@ class ClientState extends State<Client> {
                leading:const Icon(Icons.question_answer_outlined),
                title: const Text('客服'),
                onTap:(){
-                  Navigator.pushNamed(context, Routers.restaurant_qasytstem);
+                  context.push('/restaurant_qasytstem');
                }
             ),
             const SizedBox(height: 40),
@@ -97,7 +97,7 @@ class ClientState extends State<Client> {
             title: const Text('設定'),
             onTap: () {
             showPasswordDialog(context, passwordController, () { // 傳遞回調函數
-                  Navigator.pushNamed(context, Routers.dining); // 密碼正確後導航到 dining
+                  context.push('/Dining');
             });
            },
          ),

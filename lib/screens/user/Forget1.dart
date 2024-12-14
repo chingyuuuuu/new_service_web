@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/user/Forget_provider.dart';
-import 'package:jkmapp/routers/app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 class Forget1 extends StatelessWidget {
   const Forget1({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class Forget1 extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // 返回到上一个页面
+            context.pop();
           },
         ),
       ),
@@ -65,9 +65,7 @@ class Forget1 extends StatelessWidget {
                     onPressed: forgetProvider.isSending
                         ? null
                         : () async {
-                      await forgetProvider.sendResetCode(
-                        context,
-                            () => Navigator.pushNamed(context, Routers.forget2),
+                      await forgetProvider.sendResetCode(context, () => context.push('/Forget2'),
                       );
                     },
                     child: forgetProvider .isSending

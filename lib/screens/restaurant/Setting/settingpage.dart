@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jkmapp/utils/localStorage.dart';
 import 'package:jkmapp/providers/restaurant/remark_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
+
 
 class SettingsPage extends StatefulWidget{
   final VoidCallback onSave;//回調函數
@@ -47,7 +49,7 @@ class SettingsPageState extends State<SettingsPage> {
         leading: IconButton(
           icon: Icon(Icons.menu, color: Colors.black), // 更改圖標顏色以適應白色背景
           onPressed: () {
-            Navigator.pop(context); // 返回上一頁
+            context.pop();
           },
         ),
       ),
@@ -154,7 +156,7 @@ class SettingsPageState extends State<SettingsPage> {
                   await  StorageHelper.saveStoreName(_storeNameController.text);//用await直到future完成並返回結果
                   await   StorageHelper.savePassword(_passwordController.text);
                   widget.onSave(); // 调用回调函数，通知已經保存完成
-                  Navigator.pop(context,true);//使用這個來實現主頁和設定頁面同步
+                  context.pop(true);//使用這個來實現主頁和設定頁面同步
                 },
                 child: Text('儲存'),
                 style: ElevatedButton.styleFrom(

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:jkmapp/utils/SnackBar.dart';
 import 'package:jkmapp/utils/localStorage.dart';
 import 'package:jkmapp/constants.dart';
-
+import 'package:go_router/go_router.dart';
 
 /*優化:
 加載商品到業者和客人頁面可以用同一個url,
@@ -88,7 +88,7 @@ class ProductService{
             final response =await http.put(url,headers:headers,body: body);
             if(response.statusCode==200){
               SnackBarutils.showSnackBar(context, '商品更新成功', Colors.green);
-              Navigator.pop(context);//回到menu
+              context.pop();
             }else if(response.statusCode==404){
                //商品不存在
               SnackBarutils.showSnackBar(context, '商品未找到', Colors.red);

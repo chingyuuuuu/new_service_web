@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jkmapp/utils/exception.dart';
 import 'package:jkmapp/services/user/AuthenticationService.dart';
 import 'package:jkmapp/utils/diolog.dart';
-import 'package:jkmapp/routers/app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -18,7 +18,7 @@ class  Login extends StatelessWidget {
     //發送登入請求
     try {
       await authService.login(email, password);
-      Navigator.pushNamed(context, Routers.dining);
+      context.go('/Dining');
     }catch (e) {
       if(e is ClientException) {
         showErrorDialog(context, e.message);
@@ -92,7 +92,7 @@ class  Login extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     ElevatedButton(
-                      onPressed: ()  { Navigator.pushNamed(context,Routers.register);},
+                      onPressed: ()  {context.push('/Register');},
                       child: Text('註冊'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -120,7 +120,7 @@ class  Login extends StatelessWidget {
                   margin: const EdgeInsets.only(right: 50.0),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, Routers.forget1);
+                      context.push('/Forget1');
                     },
                     child: Text(
                       '忘記密碼?',

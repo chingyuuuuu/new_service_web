@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jkmapp/widgets/image_display.dart';
 import 'package:jkmapp/services/products/loadingproducts.dart';
-import 'package:jkmapp/routers/app_routes.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jkmapp/utils/new_order_dialog.dart';
 import 'package:jkmapp/services/user/websocket_service.dart';
-import 'dart:convert';
 
 class MenuPage extends StatefulWidget{
   @override
@@ -43,8 +42,7 @@ class MenuPageState extends State<MenuPage> {
 
 
   Future<void> _navigateToCreateMerchandise() async {
-    final result = await Navigator.pushNamed(
-        context, Routers.createMerchandise);
+    final result = await context.push('/Createmerchandise', extra: null);
     if (result != null && result is Map<String, dynamic>) {
       setState(() {
         //將新增商品資訊放入列表中
@@ -56,11 +54,10 @@ class MenuPageState extends State<MenuPage> {
 
   //傳遞productId到商品資訊頁面
   void _navigateToProductDetail(Map<String, dynamic> product, int index) async {
-    final result = await Navigator.pushNamed(
-        context, Routers.productdetail,
-        arguments: {
-          'product_id': product['product_id'],
-        });
+    final result = await context.push(
+      '/Productdetail',
+      extra: {'product_id': product['product_id']}, // 使用 extra 傳遞參數
+    );
     if (result != null && result == 'delete') {
       setState(() {
         _addedProducts.removeAt(index); // 刪除商品

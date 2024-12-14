@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:jkmapp/screens/client/orderdetailpage.dart';
+import 'package:go_router/go_router.dart';
 
 //客人可以看到的訂單-依照今天日期去篩選，再依照桌號和未結帳狀態去篩選
 
@@ -48,9 +49,7 @@ class _OrderlistpageState extends State<Orderlistpage> {
             onTap: () {
               final int? orderId = int.tryParse(order['order_id'].toString());
               if (orderId != null) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => OrderDetailPage(orderId: orderId),
-                  ),
-                );
+                context.push('/OrderdetailPage/$orderId');
               } else {
                 print('Error: Invalid orderId');
               }

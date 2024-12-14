@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:jkmapp/screens/restaurant/Order/useroderdetail.dart';
-import 'package:jkmapp/routers/app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 /*
 結帳功能-如果點選結帳按鈕可以將check更改為true已經結帳
@@ -52,13 +51,13 @@ class _CheckpageState extends State<Checkpage> {
           IconButton(
             icon: const Icon(Icons.history),
             onPressed: () {
-              Navigator.pushNamed(context, Routers.order_history);
+              context.push('/Orderhistory');
             },
           ),
           IconButton(
             icon: const Icon(Icons.attach_money),
             onPressed: () {
-              Navigator.pushNamed(context, Routers.RevenuePage);
+              context.push('/Revenuepage');
             },
           )
         ],
@@ -75,13 +74,7 @@ class _CheckpageState extends State<Checkpage> {
           return GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      Userorderdetail(orderId: orderId),
-                ),
-              );
+              context.push('/userorderdetail/$orderId');
             },
             child: Container(
               margin: const EdgeInsets.symmetric(

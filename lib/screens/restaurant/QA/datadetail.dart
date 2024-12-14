@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/QA/QA_provider.dart';
 import 'package:jkmapp/widgets/image_display.dart'; // Import ImageDisplay widget
 import 'package:jkmapp/utils/localStorage.dart';
+import 'package:go_router/go_router.dart';
+
 
   class Datadetail extends StatefulWidget {
   final String qaId;
@@ -115,7 +117,7 @@ class DatadetailState extends State<Datadetail> {
                 ElevatedButton(
                   onPressed: () async {
                     await qaProvider.deleteData(widget.qaId);
-                    Navigator.pop(context, true); // 刪除後返回上一頁
+                    context.pop(true);
                   },
                   child: const Text(
                       '刪除', style: TextStyle(color: Colors.red)),
@@ -133,7 +135,7 @@ class DatadetailState extends State<Datadetail> {
                       type: selectedCategory,
                       imageUrl: imageData, // 将当前图片数据传递回去
                     );
-                    Navigator.pop(context); // 修改後返回上一頁
+                    context.pop();
                   },
                   child: const Text(
                     '儲存',

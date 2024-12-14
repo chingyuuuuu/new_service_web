@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/restaurant/product_provider.dart';
+import 'package:go_router/go_router.dart';
 
 class CreateMerchandise extends StatefulWidget {
   @override
@@ -28,7 +29,7 @@ class CreateMerchandiseState extends State<CreateMerchandise> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
       ),

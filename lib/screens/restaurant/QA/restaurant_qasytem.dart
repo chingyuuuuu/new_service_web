@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jkmapp/providers/QA/QA_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/QA/Speech_provider.dart';
+import 'package:go_router/go_router.dart';
+
 
 //客服系統
 
@@ -57,7 +59,7 @@ class RestaurantQASystemState extends State<RestaurantQASystem> {
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () {
-                Navigator.pop(context);
+                context.pop();
               },
             ),
           ),

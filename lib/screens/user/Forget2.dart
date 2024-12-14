@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'forget3.dart';
 import 'package:jkmapp/providers/user/Forget_provider.dart';
+import 'package:go_router/go_router.dart';
+
 
 class Forget2 extends StatefulWidget {
   const Forget2({Key? key}) : super(key: key);
@@ -28,7 +30,7 @@ class _Forget2State extends State<Forget2> {
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => context.pop(),
         ),
       ),
       backgroundColor: Colors.white,

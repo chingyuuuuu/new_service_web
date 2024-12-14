@@ -8,6 +8,8 @@ import 'package:jkmapp/utils/localStorage.dart';
 import 'package:jkmapp/services/products/saveproduct_service.dart';
 import 'package:jkmapp/services/products/typedialog.dart';
 import 'package:jkmapp/services/products/loadingproducts.dart';
+import 'package:go_router/go_router.dart';
+
 
 class ProductProvider with ChangeNotifier {
   final TextEditingController nameController = TextEditingController();
@@ -63,7 +65,7 @@ class ProductProvider with ChangeNotifier {
     if (isDeleted) {
       _productDetails = null; // 清除已刪除的產品數據
       notifyListeners();
-      Navigator.pop(context, 'delete'); // 返回上一頁並標記刪除成功
+      context.pop('delete');
     }
   }
 

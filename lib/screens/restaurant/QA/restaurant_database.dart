@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/QA/QA_provider.dart';
 import 'package:jkmapp/screens/restaurant/QA/question_form.dart';
 import 'package:jkmapp/screens/restaurant/QA/datadetail.dart';
+import 'package:go_router/go_router.dart';
 
 class restaurantData extends StatefulWidget {
   const restaurantData({super.key});
@@ -59,7 +60,7 @@ class restaurantDataState extends State<restaurantData> {
                   icon:const Icon(Icons.question_mark_outlined,color:Colors.black),
                   tooltip: '未解答的問題',
                   onPressed: (){
-                     Navigator.pushNamed(context,  '/UnansweredQuestions');
+                     context.push('/UnansweredQuestions');
                   },
                )
             ],
