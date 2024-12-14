@@ -26,7 +26,6 @@ class Routers{
   static const String first ='/First';
   static const String Login ='/Login';
   static const String forget1 ='/forget1';
-  static const String choose ='/Choose';
   static const String register = '/Register';
   static const String forget2 = '/Forget2';
   static const String forget3 = '/Forget3';

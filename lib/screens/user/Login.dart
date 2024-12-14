@@ -92,7 +92,7 @@ class  Login extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     ElevatedButton(
-                      onPressed: ()  {Navigator.pushNamed(context,Routers.register);},
+                      onPressed: ()  { Navigator.pushNamed(context,Routers.register);},
                       child: Text('註冊'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,

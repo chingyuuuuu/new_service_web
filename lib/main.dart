@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jkmapp/constants.dart';
 import 'package:jkmapp/providers/client/Notification_Provider.dart';
 import 'package:jkmapp/providers/QA/QA_provider.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
@@ -12,10 +13,14 @@ import 'package:jkmapp/providers/user/Forget_provider.dart';
 import 'providers/client/cart_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:jkmapp/services/user/websocket_service.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setUrlStrategy(PathUrlStrategy());//開啟path routing-
+
+  final webSocketService=WebSocketService();
+  webSocketService.connect(baseUrl);
 
   runApp(
     MultiProvider(

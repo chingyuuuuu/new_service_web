@@ -5,7 +5,6 @@ import 'package:jkmapp/providers/client/cart_provider.dart';
 import'package:jkmapp/utils/SnackBar.dart';
 import 'package:jkmapp/providers/restaurant/remark_provider.dart';
 
-
 Widget buildCartBottomSheet(BuildContext context,String tableNumber) {
   final cartProvider = Provider.of<CartProvider>(context); // 獲取購物車狀態
   final remarkProvider = Provider.of<RemarkProvider>(context);
@@ -160,14 +159,14 @@ Widget buildCartBottomSheet(BuildContext context,String tableNumber) {
            child:ElevatedButton(
            onPressed: () async{
              final String remark=remarkController.text;
-            bool success =await OrderService.saveOrder(tableNumber,products, totalAmount,remark);
-            if(success){
+             bool success =await OrderService.saveOrder(tableNumber,products, totalAmount,remark);
+             if(success){
               cartProvider.clearCart();
               Navigator.pop(context);
               SnackBarutils.showSnackBar(context, "下單成功", Colors.green);
-            }else{
+             }else{
               SnackBarutils.showSnackBar(context, "下單失敗", Colors.red);
-            }
+             }
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.black,

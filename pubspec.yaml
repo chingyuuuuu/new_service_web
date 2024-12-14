@@ -27,6 +27,7 @@ dependencies:
   flutter_tts: ^3.2.2 #用於語音合成
   universal_html: ^2.0.4
   flutter_launcher_icons: ^0.11.0
+  socket_io_client: ^2.0.0
 
 
 

@@ -41,6 +41,7 @@ class ClientState extends State<Client> {
     });
   }
 
+
   String _getTableNumberFromUrl() {
     final url = html.window.location.href; // 獲取目前的url
     final uri = Uri.parse(url);

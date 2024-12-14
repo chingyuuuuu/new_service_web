@@ -5,6 +5,8 @@ class NotificationProvider with ChangeNotifier {
   String? _tableNumber;
   String? get tableNumber =>_tableNumber;
 
+
+  //服務鈴通知
   void toggleServiceBell(String tableNumber) {
     if(isServiceBellTapped)return;//如果服務鈴已經被按下返回true
 
@@ -17,7 +19,6 @@ class NotificationProvider with ChangeNotifier {
       _tableNumber=null;
       notifyListeners();//通知更新
     });
-
   }
 
 }

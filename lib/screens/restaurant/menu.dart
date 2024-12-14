@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:jkmapp/widgets/image_display.dart';
 import 'package:jkmapp/services/products/loadingproducts.dart';
 import 'package:jkmapp/routers/app_routes.dart';
-
+import 'package:jkmapp/utils/new_order_dialog.dart';
+import 'package:jkmapp/services/user/websocket_service.dart';
+import 'dart:convert';
 
 class MenuPage extends StatefulWidget{
   @override
@@ -11,13 +13,26 @@ class MenuPage extends StatefulWidget{
 
 class MenuPageState extends State<MenuPage> {
   List<Map<String, dynamic>>_addedProducts = []; //儲存多個商品訊息
+  final webSocketService = WebSocketService();
+
   @override
   //登入後即加載商品
   void initState() {
     super.initState();
     _loadProducts();
+    webSocketService.on('new_order',(data){
+      print('收到新訂單通知: ${data['message']}');
+      NewOrderDialog.showNewOrderDialog(context, data['message']);
+    });
   }
 
+  @override
+  void dispose() {
+    webSocketService.on('new_order', (data) {}); // 清空監聽器
+    super.dispose();
+  }
+
+  
   //從ProductService加載商品數據
   void _loadProducts() async {
     final loadedProducts = await ProductService.loadProdcuts(context);
@@ -58,11 +73,13 @@ class MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
+      body:Stack(
+        children: [
+         CustomScrollView(
+          slivers: [
+           SliverAppBar(
             title: Text("菜單",
-            style:TextStyle(
+             style:TextStyle(
                color:Colors.white,
               fontSize:18,
               fontWeight: FontWeight.bold,
@@ -87,12 +104,11 @@ class MenuPageState extends State<MenuPage> {
               },
             ),
           ),
-
           // 检查商品是否为空
           _addedProducts.isEmpty
               ? SliverFillRemaining(
-            child: Center(child: Text("尚未加入商品")),
-          )
+               child: Center(child: Text("尚未加入商品")),
+               )
               : SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverGrid(
@@ -130,6 +146,8 @@ class MenuPageState extends State<MenuPage> {
               ),
             ),
           ),
+        ],
+       ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
