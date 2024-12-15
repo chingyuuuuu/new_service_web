@@ -64,7 +64,7 @@ class _Forget3State extends State<Forget3> {
       setState(() {
         _message = 'Password updated successfully!';
       });
-      context.go('/Login');
+      context.push('/Login');
     } else {
       final responseData = jsonDecode(response.body);
       setState(() {

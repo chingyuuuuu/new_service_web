@@ -17,7 +17,7 @@ class TableGeneratorService {
     if (count != null && count > 0 && count <= 50) {
       List<Map<String, String>> tableData = List.generate(count, (index) {
         final tableNumber = "table${index + 1}";
-        final qrData = "$baseUrl/Client?$tableNumber";
+        final qrData = "$baseUrl/Client/$tableNumber";
         return {
           "tableNumber": tableNumber,
           "qrData": qrData,
