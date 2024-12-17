@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jkmapp/constants.dart';
 import 'package:jkmapp/utils/exception.dart';
 import 'package:jkmapp/services/user/AuthenticationService.dart';
 import 'package:jkmapp/utils/diolog.dart';
 import 'package:go_router/go_router.dart';
-
 
 
 class  Login extends StatelessWidget {
@@ -18,6 +18,7 @@ class  Login extends StatelessWidget {
     //發送登入請求
     try {
       await authService.login(email, password);
+      isloggedIn=true;
       context.go('/Dining');
     }catch (e) {
       if(e is ClientException) {

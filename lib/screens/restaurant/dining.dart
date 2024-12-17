@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jkmapp/constants.dart';
 import 'menu.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jkmapp/utils/localStorage.dart';
-import'package:jkmapp/providers/client/Notification_Provider.dart';
 import 'package:provider/provider.dart';
-import 'package:jkmapp/utils/SnackBar.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
+
 class dining extends StatefulWidget {
   @override
   _DiningState createState() => _DiningState();
@@ -107,27 +107,14 @@ class _DiningState extends State<dining> {//和statefulwidget適配對，實際�
               leading: Icon(Icons.logout),
               title: Text('登出'),
               onTap: () {
+                isloggedIn=false;
                 context.go('/Login');
               },
             ),
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(child: MenuPage()),
-          Consumer<NotificationProvider>( // 使用 Consumer監聽狀態
-            builder: (context, notificationProvider, child) {
-              if (notificationProvider.isServiceBellTapped) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {//在build 完成後顯示
-                  SnackBarutils.showSnackBar(context, '${notificationProvider.tableNumber} 按下服務鈴', Colors.red);
-                });
-              }
-              return Container();
-            },
-          ),
-        ],
-      ),
+       body:MenuPage(),
     );
   }
 }

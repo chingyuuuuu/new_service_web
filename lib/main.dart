@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jkmapp/constants.dart';
-import 'package:jkmapp/providers/client/Notification_Provider.dart';
 import 'package:jkmapp/providers/QA/QA_provider.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
 import 'package:jkmapp/routers/app_routes.dart';
@@ -29,8 +28,6 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CartProvider()//提供購物車的狀態
-        ),
-        ChangeNotifierProvider(create: (_)=>NotificationProvider()
         ),
         ChangeNotifierProvider(create: (_)=>OrderProvider()
         ),

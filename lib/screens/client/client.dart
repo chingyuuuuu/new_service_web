@@ -7,7 +7,6 @@ import 'package:jkmapp/widgets/client/ProductCard.dart';
 import 'package:provider/provider.dart';
 import 'package:jkmapp/providers/restaurant/order_provider.dart';
 import 'package:jkmapp/providers/client/client_provider.dart';
-import  'package:jkmapp/providers/client/Notification_Provider.dart';
 import 'dart:html' as html;
 import 'package:go_router/go_router.dart';
 
@@ -51,7 +50,6 @@ class ClientState extends State<Client> {
   @override
   Widget build(BuildContext context) {
     final clientProvider = Provider.of<ClientProvider>(context);
-    final notificationProvider=Provider.of<NotificationProvider>(context);
 
     return Scaffold(
       drawer: Drawer( //側邊儀表板
@@ -81,17 +79,6 @@ class ClientState extends State<Client> {
                }
             ),
             const SizedBox(height: 40),
-            ListTile(
-              leading: Icon(Icons.notifications,
-                  color: notificationProvider.isServiceBellTapped
-                        ? Colors.yellow
-                        : Colors.black),
-              title: Text('服務鈴'),
-              onTap: () {
-                notificationProvider.toggleServiceBell(tableNumber);
-              },
-            ),
-            const SizedBox(height: 10),
             ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('設定'),

@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:jkmapp/utils/localStorage.dart';
 import 'package:jkmapp/widgets/First.dart';
 import 'package:jkmapp/screens/user/Login.dart';
 import 'package:jkmapp/screens/user/Forget1.dart';
@@ -22,7 +23,7 @@ import 'package:jkmapp/screens/restaurant/Table/TableManagementPage.dart';
 import 'package:jkmapp/screens/restaurant/Checkout/checkpage.dart';
 import 'package:jkmapp/screens/restaurant/Checkout/RevenuePage.dart';
 import 'package:jkmapp/screens/restaurant/Order/useroderdetail.dart';
-
+import 'package:jkmapp/constants.dart';
 
 final GoRouter router = GoRouter(
   routes: [
@@ -53,6 +54,13 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/Dining',
       builder: (context, state) => dining(),
+      redirect: (context,state){
+        // 檢查登入狀態
+        if (!isloggedIn) {
+          return '/login'; // 未登入時重定向到登入頁面
+        }
+        return  null; // 已登入時可正常訪問
+      },
     ),
     GoRoute(
       path: '/Createmerchandise',
