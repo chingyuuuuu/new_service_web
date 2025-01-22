@@ -11,6 +11,6 @@ In order to facilitate catering operators to manage orders and dynamically custo
 ![How to order?](images/websocket.png)
 # Caterers
 ![Caterers](images/store.png)
-![](images/stores2.png)
+![Caterers](images/store2.png)
 # Client
 ![Client](images/client.png)
