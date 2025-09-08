@@ -1,6 +1,6 @@
 # Dining Service Web 
 
-For the caterers,/n
+For the caterers,<br>
 Since most stores currently hire contractors to build customized ordering systems, which is often costly, I want to develop a universal ordering system that any store can use, making it accessible to those with limited budgets but who still want an online ordering solution.
 
 ## Introduce 
